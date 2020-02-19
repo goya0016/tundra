@@ -33,7 +33,7 @@ const app={
         })
     },
     showData:()=>{
-        document.querySelector(".card").classList.add('active');
+        document.querySelector(".homePage").classList.add('active');
         document.querySelector(".details").classList.remove('active');
 
         if(app.people.length<=1){
@@ -57,36 +57,47 @@ const app={
         app.showData();
     },
     showSaved:()=>{
-        document.querySelector(".card").classList.remove("active");
-        document.querySelector(".details").classList.add("active");
        
-          let str = sessionStorage.getItem(app.KEY);
-          app.savedPeople = JSON.parse(str);
-
-        let secondPage = document.querySelector('.details');
-        secondPage.innerHTML="";
-         app.savedPeople.forEach(element => {
-             let div= document.createElement('div');
-             let icon= document.createElement('button');
-             let  img = document.createElement('img');
-                let name = document.createElement('span');
-                let gender = document.createElement("span");
-                icon.textContent="delete";
-                img.setAttribute('src', app.baseUrl+element.avatar);
-                img.setAttribute('alt',"logo");
-                img.setAttribute('class','logo');
-
-                name.textContent=`${element.first} ${element.last}`;
-                gender.textContent=` ${element.gender} ${element.distance}`;
-            div.setAttribute("data-target-id", element.id);
-                div.appendChild(img);
-                name.appendChild(gender);
-                img.insertAdjacentElement("afterend",name);
-                div.insertAdjacentElement('beforeend',icon);
-
-                secondPage.appendChild(div);
-                icon.addEventListener('click',app.deleteItem)
-         });
+        console.log(app.savedPeople);
+        let secondPage = document.querySelector(".savedContent");
+        if(app.savedPeople.length==0){
+            console.log("0");
+            document.querySelector(".homePage").classList.remove("active");
+            document.querySelector(".details").classList.add("active");
+            secondPage.innerHTML = "";
+           let p= document.createElement('p');
+            p.textContent="You dont have any profiles saved."
+            p.setAttribute("class","content");
+            secondPage.insertAdjacentElement("beforeend", p);
+        }
+        else{
+            document.querySelector(".homePage").classList.remove("active");
+            document.querySelector(".details").classList.add("active");
+        let str = sessionStorage.getItem(app.KEY);
+        app.savedPeople = JSON.parse(str);
+         
+             secondPage.innerHTML = "";
+              app.savedPeople.forEach(element => {
+                  let div= document.createElement('div');
+                  let icon= document.createElement('button');
+                  let  img = document.createElement('img');
+                     let name = document.createElement('p');
+                     icon.textContent="Delete";
+                     icon.setAttribute("id","delbtn")
+                     img.setAttribute('src', app.baseUrl+element.avatar);
+                     img.setAttribute('alt',"logo");
+                     img.setAttribute('class','logo');
+     
+                     name.textContent=`${element.first} ${element.last}`;
+                 div.setAttribute("data-target-id", element.id);
+                     div.appendChild(img);
+                     img.insertAdjacentElement("afterend",name);
+                     div.insertAdjacentElement('beforeend',icon);
+     
+                     secondPage.appendChild(div);
+                     icon.addEventListener('click',app.deleteItem)
+              });
+       }
         
     },
     deleteItem:(ev)=>{
