@@ -152,20 +152,21 @@ html {
   font-weight: 300;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  width: 90vw;
+  /* width: 90vw; */
   overflow-x: hidden; }
 
 body {
   overflow-y: auto;
   overflow-x: hidden;
   min-height: 100vh;
-  width: 90vw; }
+  /* width: 90vw;  */
+}
 
-header {
-  padding: 1rem 2rem; }
+/* header {
+  padding: 1rem 2rem; } */
 
-section {
-  padding: 1rem 0; }
+/* section {
+  padding: 1rem 0; } */
 
 blockquote {
   /**
@@ -234,9 +235,9 @@ blockquote::after {
 ************************************/
 .page {
   position: absolute;
-  width: 90vw;
+  /* width: 95vw; */
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: 90vh;
   display: none;
   z-index: 1;
   opacity: 0;
@@ -249,10 +250,10 @@ blockquote::after {
 
 .overlay {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   position: fixed;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.85);
   z-index: 200; }
 
 .overlay-bars {
@@ -261,7 +262,8 @@ blockquote::after {
   position: fixed;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 400; }
+  z-index: 400; 
+}
 
 .overlay > *,
 .overlay-bars > * {
@@ -300,7 +302,9 @@ object.fluid {
   margin: 1rem;
   border: 1px solid #ddd;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-  background-color: #fff; }
+  background-color: #fff;
+  transform: translateX(0%);
+  transition: transform 0.5ss linear; }
 
 .card.fixed {
   position: absolute;
@@ -355,7 +359,7 @@ object.fluid {
 
 .card img {
   box-sizing: border-box;
-  width: 90%;
+  width: 95%;
   padding: 0.5rem 1rem; }
 
 .card header {
@@ -650,7 +654,7 @@ i.icon {
     LISTS
 ************************************/
 .list-view {
-  margin: 4rem 0 1rem;
+  /* margin: 4rem 0 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -662,12 +666,13 @@ i.icon {
 .list-item {
   list-style-type: none;
   color: #999;
-  border-bottom: 1px solid #999;
+  /* border-bottom: 1px solid #999; */
+  border:1px solid;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: stretch;
-  width: 100vw;
+  /* width: 90vw; */
   transform: translateX(0px); }
 
 .list-item.has-reveal-left {
@@ -684,18 +689,20 @@ i.icon {
 .list-item .list-text {
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  text-overflow: clip;
+  /* text-overflow: clip; */
   font-weight: 300;
   line-height: 1;
   min-height: 3rem;
-  order: 3;
+  /* order: 3; */
   display: flex;
-  flex-basis: 100vw;
+  /* flex-basis: 100vw; */
   flex-grow: 0;
   flex-shrink: 1;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: flex-start;
-  z-index: 30; }
+  /* margin-left:20vw; */
+  /* z-index: 30; */
+ }
 
 .list-item .reveal-left {
   order: 1;
@@ -739,9 +746,9 @@ i.icon {
 .list-item .action-left {
   order: 2;
   font-size: 1.5rem;
-  line-height: 1;
+  /* line-height: 1; */
   flex-basis: 20vw;
-  height: 2rem;
+  /* height: 2rem; */
   border-radius: 50%;
   color: inherit;
   display: flex;
@@ -754,7 +761,7 @@ i.icon {
   background-color: rgba(140, 217, 217, 0.5); }
 
 .list-item .avatar {
-  position: absolute;
+  /* position: absolute; */
   box-sizing: content-box;
   width: 2.8rem;
   height: 2.8rem;
@@ -1247,3 +1254,4 @@ a.link {
 .center {
   margin: auto;
   text-align: center; }
+
