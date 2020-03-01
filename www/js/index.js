@@ -14,10 +14,12 @@ const app = {
     app.addData();
   },
   createDiv: () => {
+    app.addData();
     let homePage = document.querySelector(".homePage");
     let div = document.createElement("div");
     div.setAttribute("class", "card");
-    div.classList.add("fixed", "dot");
+    div.classList.add('fixed','dot')
+    // div.classList.add("fixed","dot");
     homePage.appendChild(div);
 
     let target = document.querySelector(".card");
@@ -46,12 +48,13 @@ const app = {
     console.log(app.people);
     document.querySelector(".homePage").classList.add("active");
     document.querySelector(".details").classList.remove("active");
+    document.querySelector(".tab").classList.toggle("current");
     let div = document.querySelector(".card");
 
     setTimeout(() => {
       div.classList.remove("dot");
       div.classList.add("active");
-    }, 600);
+    }, 300);
     if (app.people.length <= 1) {
       app.addData();
     }
@@ -80,17 +83,17 @@ const app = {
   },
   delete: ev => {
     document.getElementById("swipeLeft").classList.add("overlay", "message");
+    let div = document.querySelector(".card");
     setTimeout(() => {
       document
         .getElementById("swipeLeft")
         .classList.remove("overlay", "message");
+        div.classList.add("goleft");
 
       div.parentElement.removeChild(div);
       app.createDiv();
     }, 500);
     app.people.splice([0], 1);
-    let div = document.querySelector(".card");
-    div.classList.add("goleft");
     // setTimeout(
     //     function () {
     //         this.parentElement.removeChild(this);
@@ -106,6 +109,8 @@ const app = {
       document
         .getElementById("swipeRight")
         .classList.remove("overlay", "message");
+        
+      div.classList.add("goRight");
       div.parentElement.removeChild(div);
       app.createDiv();
     }, 500);
@@ -117,6 +122,7 @@ const app = {
   showSaved: () => {
     console.log(app.savedPeople);
     let secondPage = document.querySelector(".savedContent");
+    document.querySelector('.tab').classList.toggle('current');
     if (app.savedPeople.length == 0) {
       console.log("0");
       document.querySelector(".homePage").classList.remove("active");
