@@ -16,7 +16,7 @@ const app = {
     let homePage = document.querySelector(".homePage");
     let div = document.createElement("div");
     div.setAttribute("class", "card");
-    div.classList.add('fixed','dot')
+    div.classList.add("fixed", "dot");
 
     homePage.appendChild(div);
 
@@ -83,7 +83,7 @@ const app = {
       document
         .getElementById("swipeLeft")
         .classList.remove("overlay", "message");
-        div.classList.add("goleft");
+      div.classList.add("goleft");
 
       div.parentElement.removeChild(div);
       app.createDiv();
@@ -97,7 +97,7 @@ const app = {
       document
         .getElementById("swipeRight")
         .classList.remove("overlay", "message");
-        
+
       div.classList.add("goRight");
       div.parentElement.removeChild(div);
       app.createDiv();
@@ -110,8 +110,8 @@ const app = {
   showSaved: () => {
     let secondPage = document.querySelector(".savedContent");
 
-    document.querySelector('.home').classList.remove('current');
-    document.querySelector('.save').classList.add('current');
+    document.querySelector(".home").classList.remove("current");
+    document.querySelector(".save").classList.add("current");
 
     if (app.savedPeople.length == 0) {
       document.querySelector(".homePage").classList.remove("active");
