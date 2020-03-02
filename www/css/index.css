@@ -1,5 +1,5 @@
 body{
-    background-color: #5B84B1FF;
+    background-color: #30110d;
 }
 /* nav{
     ba
@@ -23,17 +23,20 @@ display: none;
 ul{
     margin-top: 0.5rem;
 }
-li{
-/* margin-top: 1rem; */
-margin-bottom: 1rem;
-background-color: cornsilk;
+li{/* margin-top: 1rem; */margin-bottom: 0.5rem;background-color: white;/* text-align:center; */}
+.list-text{
+  color:#30110d;
+  text-align:center;
+  /* justify-content:left; */
 }
-li img{
-    width: 100px;
+.list-text span{
+  font-weight:700;
 }
 li .avatar{
     float: left;
-    margin: 0.25rem;
+    margin: 0.25rem 0rem 0.25rem 1rem;
+    width: 100px;
+    box-shadow:2px 2px 6px black
 }
 i{
     /* position: ; */
@@ -42,6 +45,7 @@ i{
   /* justify-content: flex-end; */
   padding-left: 2rem;
   /* left:95%; */
+
 }
 .details{
     height:90vh;
@@ -53,7 +57,7 @@ i{
   grid-template-areas: "title";
   height: 2.25rem;
   font-weight: 200;
-  background-color: hsl(87, 90%, 65%); 
+  background-color: #f2bc94; 
   box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.64);
 }
 .page.active header h1 {
@@ -65,14 +69,20 @@ i{
   align-self: center ;
     margin-top: 0;
 }
+.card.fixed{
+  top:3.5rem;
+     left:0.75rem;
+}
 .card{
+ 
     width:90vw;
     /* margin-top: 5vh; */
     border:2px solid;
     height:70vh;
     /* margin-left:2.5vw; */
     text-align: center ;
-    box-shadow: 4px 4px 4px black;
+    box-shadow: 4px 4px 4px #a5a1a1;
+    background-color:#ffd0ae
 }
 .card p{
     /* font-size:2rem; */
@@ -81,6 +91,12 @@ i{
 .card img{
     /* width:80vw;  */
     margin-top: 0.75rem;
-    border:0.5px solid;
-    /* box-shadow: 4px 4px 6px rgb(76, 76, 76); */
+
+/*     box-shadow: 1px 1px 9px rgb(76, 76, 76); */
+}
+ul p{
+  color:#f2bc94;
+}
+.bar{
+  background-color:#
 }

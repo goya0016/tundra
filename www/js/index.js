@@ -6,7 +6,6 @@ const app = {
   init: () => {
     app.touchListeners();
     app.addData();
-    app.createDiv();
   },
   touchListeners: () => {
     document.getElementById("home").addEventListener("click", app.showData);
@@ -14,12 +13,11 @@ const app = {
     app.addData();
   },
   createDiv: () => {
-    app.addData();
     let homePage = document.querySelector(".homePage");
     let div = document.createElement("div");
     div.setAttribute("class", "card");
     div.classList.add('fixed','dot')
-    // div.classList.add("fixed","dot");
+
     homePage.appendChild(div);
 
     let target = document.querySelector(".card");
@@ -27,9 +25,7 @@ const app = {
 
     tiny.addEventListener("swipeleft", app.delete);
     tiny.addEventListener("swiperight", app.save);
-    setTimeout(() => {
-      app.showData();
-    }, 500);
+    app.showData();
   },
   addData: () => {
     let url = `http://griffis.edumedia.ca/mad9022/tundra/get.profiles.php?gender`;
@@ -41,14 +37,15 @@ const app = {
         let imgurl = decodeURIComponent(data.imgBaseURL);
         app.baseUrl = "https:" + imgurl;
         app.people = data.profiles;
-        // app.showData();
+        app.createDiv();
       });
   },
   showData: () => {
-    console.log(app.people);
     document.querySelector(".homePage").classList.add("active");
     document.querySelector(".details").classList.remove("active");
-    document.querySelector(".tab").classList.toggle("current");
+
+    document.querySelector(".save").classList.remove("current");
+    document.querySelector(".home").classList.add("current");
     let div = document.querySelector(".card");
 
     setTimeout(() => {
@@ -59,10 +56,8 @@ const app = {
       app.addData();
     }
     let firstElement = app.people[0];
-    // console.log(firstElement)
     if (div.innerHTML != "") {
     } else {
-      // console.log('null')
       let img = document.createElement("img");
       let name = document.createElement("p");
       let gender = document.createElement("p");
@@ -94,13 +89,6 @@ const app = {
       app.createDiv();
     }, 500);
     app.people.splice([0], 1);
-    // setTimeout(
-    //     function () {
-    //         this.parentElement.removeChild(this);
-    //         app.createDiv()
-    //     }.bind(div),
-    //     100
-    // );
   },
   save: ev => {
     let div = document.querySelector(".card");
@@ -114,27 +102,32 @@ const app = {
       div.parentElement.removeChild(div);
       app.createDiv();
     }, 500);
+
     app.savedPeople.push(app.people[0]);
     sessionStorage.setItem(app.KEY, JSON.stringify(app.savedPeople));
     app.people.splice([0], 1);
-    // app.showData();
   },
   showSaved: () => {
-    console.log(app.savedPeople);
     let secondPage = document.querySelector(".savedContent");
-    document.querySelector('.tab').classList.toggle('current');
+
+    document.querySelector('.home').classList.remove('current');
+    document.querySelector('.save').classList.add('current');
+
     if (app.savedPeople.length == 0) {
-      console.log("0");
       document.querySelector(".homePage").classList.remove("active");
       document.querySelector(".details").classList.add("active");
+
       secondPage.innerHTML = "";
+
       let p = document.createElement("p");
       p.textContent = "You dont have any profiles saved.";
       p.setAttribute("class", "content");
+
       secondPage.insertAdjacentElement("beforeend", p);
     } else {
       document.querySelector(".homePage").classList.remove("active");
       document.querySelector(".details").classList.add("active");
+
       let str = sessionStorage.getItem(app.KEY);
       app.savedPeople = JSON.parse(str);
 
@@ -149,7 +142,7 @@ const app = {
         let icon = document.createElement("i");
         let img = document.createElement("img");
         let name = document.createElement("span");
-        //  icon.textContent="Delete";
+
         icon.setAttribute("class", "icon delete");
         img.setAttribute("src", app.baseUrl + element.avatar);
         img.setAttribute("alt", "logo");
@@ -160,11 +153,7 @@ const app = {
         li.appendChild(img);
         listItem.appendChild(name);
         name.insertAdjacentElement("afterend", icon);
-        //  li.appendChild(actionLeft);
         li.insertAdjacentElement("beforeend", listItem);
-        //  li.appendChild(img);
-        //  img.insertAdjacentElement("afterend",name);
-        //  li.insertAdjacentElement('beforeend',icon);
 
         secondPage.appendChild(li);
         icon.addEventListener("click", app.deleteItem);

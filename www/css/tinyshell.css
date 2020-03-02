@@ -143,7 +143,8 @@ https://material.io/icons/
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  }
 
 html {
   font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
@@ -313,7 +314,8 @@ object.fluid {
   left: 1rem;
   right: 1rem;
   margin: 0;
-  transition: all 0.5s ease-out; }
+  transition: all 0.5s ease-out;
+  }
 
 .card.fixed.nobar {
   top: 1rem; }
@@ -673,7 +675,8 @@ i.icon {
   justify-content: space-around;
   align-items: stretch;
   /* width: 90vw; */
-  transform: translateX(0px); }
+  transform: translateX(0px);
+  }
 
 .list-item.has-reveal-left {
   width: calc(100vw + 20vw);
@@ -689,19 +692,20 @@ i.icon {
 .list-item .list-text {
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  /* text-overflow: clip; */
+  text-overflow: clip;
   font-weight: 300;
   line-height: 1;
   min-height: 3rem;
-  /* order: 3; */
+  order: 3;
   display: flex;
   /* flex-basis: 100vw; */
   flex-grow: 0;
   flex-shrink: 1;
   /* flex-direction: column; */
   justify-content: flex-start;
-  /* margin-left:20vw; */
-  /* z-index: 30; */
+  margin-left: 10vw;
+  z-index: 30;
+  align-items: center;
  }
 
 .list-item .reveal-left {
@@ -768,7 +772,8 @@ i.icon {
   left: 0.5rem;
   top: 0.6rem;
   border-radius: 50%;
-  border: 0px solid #999; }
+  border: 0px solid #999;
+  }
 
 .list-item .avatar-box {
   position: absolute;
